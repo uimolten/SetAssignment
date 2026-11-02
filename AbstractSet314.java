@@ -7,9 +7,9 @@
  *  Number of slip days used:
  *
  *  Student 1 (Student whose Canvas account is being used)
- *  UTEID:
- *  email address:
- *  TA name:
+ *  UTEID: rrt873
+ *  email address: rrt873@my.utexas.edu
+ *  TA name: Jason
  *  
  *  Student 2 
  *  UTEID:
@@ -19,15 +19,16 @@
 import java.util.Iterator;
 
 /**
- * Students are to complete this class. 
+ * Students are to complete this class.
  * Students should implement as many methods
- * as they can using the Iterator from the iterator 
- * method and the other methods. 
+ * as they can using the Iterator from the iterator
+ * method and the other methods.
  *
  */
 public abstract class AbstractSet314<E> implements ISet<E> {
 
-    /* DELETE THIS COMMENT FROM YOUR SUBMISSION.
+    /*
+     * DELETE THIS COMMENT FROM YOUR SUBMISSION.
      * 
      * RECALL:
      * 
@@ -41,11 +42,11 @@ public abstract class AbstractSet314<E> implements ISet<E> {
      * 
      * NO METHODS ADDED other than those in ISet and Object.
      */
-     
-      
+
     /**
-     * Return a String version of this set. 
+     * Return a String version of this set.
      * Format is (e1, e2, ... en)
+     * 
      * @return A String version of this set.
      */
     public String toString() {
