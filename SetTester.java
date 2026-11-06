@@ -1,6 +1,6 @@
 
 /*
- * Student information for assignment:
+ * Student information for assignment: 2
  *
  * Number of slip days used:
  * Student 1 (Student whose turnin account is being used)
@@ -115,7 +115,6 @@ public class SetTester {
         showTestResults(actual, false, 10, s1, null, "remove and contains method SortedSet"
                 + "/nset1 does not contain A.");
 
-
         // test 11
         actual = s1.size() == 2;
         showTestResults(actual, true, 11, s1, null, "size method SortedSet"
@@ -161,7 +160,6 @@ public class SetTester {
         showTestResults(actual, true, 16, s1, s2, "union and equals methods SortedSet"
                 + "/ns2.union(s1). actual result = " + s3
                 + " expected result = " + expected);
-
 
         // test 17
         s3 = s1.intersection(s2);
