@@ -76,7 +76,6 @@ public abstract class AbstractSet314<E> implements ISet<E> {
                 it.remove();
                 return true;
             }
-            it.next();
         }
 
         return false;

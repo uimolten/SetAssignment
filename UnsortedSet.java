@@ -32,4 +32,54 @@ public class UnsortedSet<E> extends AbstractSet314<E> {
 
     private ArrayList<E> con;
 
+    public UnsortedSet() {
+        con = new ArrayList<>();
+    }
+
+    public boolean add(E item) {
+        if (!con.contains(item)) {
+            return con.add(item);
+        }
+        return false;
+    }
+
+    public void clear() {
+        while (con.size() > 0) {
+            con.remove(con.size() - 1);
+        }
+    }
+
+    public int size() {
+        return con.size();
+    }
+
+    public ISet<E> difference(ISet<E> otherSet) {
+        ISet<E> result = new UnsortedSet<>();
+        if (this == otherSet) {
+            return result;
+        }
+        for (E val : this) {
+            if (!otherSet.contains(val)) {
+                result.add(val);
+            }
+        }
+        return result;
+    }
+
+    public ISet<E> union(ISet<E> otherSet) {
+        ISet<E> result = this;
+        result.addAll(otherSet);
+        return result;
+    }
+
+    public ISet<E> intersection(ISet<E> otherSet) {
+        ISet<E> result = new UnsortedSet<>();
+        result = this.difference(this.difference(otherSet));
+        return result;
+    }
+
+    public Iterator<E> iterator() {
+        return con.iterator();
+    }
+
 }
