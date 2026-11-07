@@ -230,12 +230,8 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * O(N log N) if otherSet requires sorting.
      */
     public ISet<E> union(ISet<E> otherSet) {
-        SortedSet<E> result = this;
-
-        if (result == otherSet) {
-            return otherSet;
-        }
-
+        SortedSet<E> result = new SortedSet<>();
+        result.addAll(this);
         result.addAll(otherSet);
         return result;
     }
@@ -344,20 +340,24 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         if (this == other) {
             return true;
         }
+
         if (!(other instanceof SortedSet<?>)) {
-            return false;
-        }
-        SortedSet<E> otherSet = (SortedSet<E>) other;
-        if (this.size() == otherSet.size()) {
-            for (int i = 0; i < this.size(); i++) {
-                if (!(this.con.get(i).equals(otherSet.con.get(i)))) {
-                    return false;
-                }
-            }
-            return true;
+            return super.equals(other);
         }
 
-        return false;
+        SortedSet<?> otherSet = (SortedSet<?>) other;
+
+        if (con.size() != otherSet.con.size()) {
+            return false;
+        }
+
+        for (int i = 0; i < con.size(); i++) {
+            if (!con.get(i).equals(otherSet.con.get(i))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
