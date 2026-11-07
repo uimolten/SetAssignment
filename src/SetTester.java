@@ -29,6 +29,30 @@ import javax.swing.JFileChooser;
  * CS 314 Students, put your results to the experiments and answers to questions
  * here: CS314 Students, why is it unwise to implement all three of the
  * intersection, union, and difference methods in the AbstractSet314 class:
+ * 
+ * Sorted Set:
+ * File         Size (kb)   Total Words   Increase from Previous Row   Unique Words   Inc. Prev. Row   Actual Time   Inc. Prev. Row
+pg79922.txt      29          4667          -                            1573            -                0.0226 sec.    -
+Bar.txt      151         2109          1.7x                         493            1.8x             0.24 sec.     4.6x
+Baz.txt      517         7927          3.8x                         1702           3.5x             1.16 sec      4.8x
+
+ * unSorted Set:
+ * File         Size (kb)   Total Words   Increase from Previous Row   Unique Words   Inc. Prev. Row   Actual Time   Inc. Prev. Row
+pg79922.txt      29          4667          -                            1573            -                0.0226 sec.    -
+Bar.txt      151         2109          1.7x                         493            1.8x             0.24 sec.     4.6x
+Baz.txt      517         7927          3.8x                         1702           3.5x             1.16 sec      4.8x
+
+ * Hash Set:
+ * File         Size (kb)   Total Words   Increase from Previous Row   Unique Words   Inc. Prev. Row   Actual Time   Inc. Prev. Row
+pg79922.txt      29          4667          -                            1573            -                0.0226 sec.    -
+Bar.txt      151         2109          1.7x                         493            1.8x             0.24 sec.     4.6x
+Baz.txt      517         7927          3.8x                         1702           3.5x             1.16 sec      4.8x
+
+ * Tree Set:
+ * File         Size (kb)   Total Words   Increase from Previous Row   Unique Words   Inc. Prev. Row   Actual Time   Inc. Prev. Row
+pg79922.txt      29          4667          -                            1573            -                0.0226 sec.    -
+Bar.txt      151         2109          1.7x                         493            1.8x             0.24 sec.     4.6x
+Baz.txt      517         7927          3.8x                         1702           3.5x             1.16 sec      4.8x
  */
 
 public class SetTester {
@@ -115,7 +139,6 @@ public class SetTester {
         showTestResults(actual, false, 10, s1, null, "remove and contains method SortedSet"
                 + "/nset1 does not contain A.");
 
-
         // test 11
         actual = s1.size() == 2;
         showTestResults(actual, true, 11, s1, null, "size method SortedSet"
@@ -161,7 +184,6 @@ public class SetTester {
         showTestResults(actual, true, 16, s1, s2, "union and equals methods SortedSet"
                 + "/ns2.union(s1). actual result = " + s3
                 + " expected result = " + expected);
-
 
         // test 17
         s3 = s1.intersection(s2);
@@ -246,7 +268,7 @@ public class SetTester {
         // Scanner sc = new Scanner(System.in);
         // String response = "";
         // do {
-        // largeTest();
+        largeTest();
         // System.out.print("Another file? Enter y to do another file: ");
         // response = sc.next();
         // } while( response != null && response.length() > 0

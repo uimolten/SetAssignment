@@ -82,8 +82,10 @@ public abstract class AbstractSet314<E> implements ISet<E> {
     }
 
     public void clear() {
-        for (E item : this) {
-            this.remove(item);
+        Iterator<E> it = this.iterator();
+        while (it.hasNext()) {
+            it.next();
+            it.remove();
         }
     }
 

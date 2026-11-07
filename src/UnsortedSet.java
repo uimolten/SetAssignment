@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
- * A simple implementation of an ISet. 
+ * A simple implementation of an ISet.
  * Elements are not in any particular order.
- * Students are to implement methods that 
+ * Students are to implement methods that
  * were not implemented in AbstractSet314 and override
- * methods that can be done more efficiently. 
+ * methods that can be done more efficiently.
  * An ArrayList must be used as the internal storage container.
  *
  */

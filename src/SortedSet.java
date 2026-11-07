@@ -360,6 +360,10 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         return true;
     }
 
+    public void clear() {
+        con.clear();
+    }
+
     /**
      * Return an Iterator over the elements of this SortedSet
      * pre: none
@@ -368,6 +372,52 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      */
     public Iterator<E> iterator() {
         return con.iterator();
+    }
+
+    public boolean contains(E obj) {
+        int low = 0;
+        int high = con.size() - 1;
+        return searchHelper(con, low, high, obj);
+
+    }
+
+    public boolean containsAll(ISet<E> other) {
+        if (!(other instanceof SortedSet<?>)) {
+
+            return super.containsAll(other);
+        }
+        SortedSet<E> otherSet = (SortedSet<E>) other;
+        int index1 = 0;
+        int index2 = 0;
+        while (index1 < this.size() && index2 < otherSet.size()) {
+            int compare = con.get(index1).compareTo(otherSet.con.get(index2));
+            if (compare == 0) {
+                index1++;
+                index2++;
+            } else if (compare < 0) {
+                index1++;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+
+    private boolean searchHelper(ArrayList<E> temp, int low, int high, E target) {
+        if (low > high) {
+            return false;
+        }
+        int mid = low + (high - low) / 2;
+        if (target.equals(temp.get(mid))) {
+            return true;
+        } else if (target.compareTo(temp.get(mid)) > 0) {
+            return searchHelper(temp, mid + 1, high, target);
+        } else {
+            return searchHelper(temp, low, mid - 1, target);
+        }
+
     }
 
     /**
