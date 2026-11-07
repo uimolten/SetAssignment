@@ -52,7 +52,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * post: Creates a sorted copy of other. Other is not altered.
      * Big O: O(N log N)
      */
-    //TODO: preconditoosn
+    // TODO: preconditoosn
     public SortedSet(ISet<E> other) {
         con = new ArrayList<>();
         for (E val : other) {
@@ -71,7 +71,8 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
     private void mergeSort(ArrayList<E> data) {
         ArrayList<E> temp = new ArrayList<>(data.size());
 
-        // initialize each value to a null placeholder, since these values are only changed, not
+        // initialize each value to a null placeholder, since these values are only
+        // changed, not
         // accessed.
         while (temp.size() < data.size()) {
             temp.add(null);
@@ -105,7 +106,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * Big O: O(N)
      */
     private void merge(ArrayList<E> data, ArrayList<E> temp, int leftPos, int rightPos,
-                       int rightEnd) {
+            int rightEnd) {
         int leftEnd = rightPos - 1;
         int tempPos = leftPos;
         int numElements = rightEnd - leftPos + 1;
@@ -143,7 +144,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * post: The item is added if it was not already present.
      * return: true if this set changed, false otherwise.
      * Big O: O(N)
-     * */
+     */
     public boolean add(E item) {
         if (con.contains(item)) {
             return false;
@@ -155,7 +156,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
                 return true;
             }
         }
-        //biggest element present, add to the end
+        // biggest element present, add to the end
         con.add(item);
         return true;
     }
@@ -167,7 +168,8 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * post: This set contains all unique elements from both sets
      * in ascending order. OtherSet is not altered.
      * return: true if this set changed, false otherwise.
-     * Big O: O(N) if both sets are sorted, O(N log N) if otherSet needs to be sorted
+     * Big O: O(N) if both sets are sorted, O(N log N) if otherSet needs to be
+     * sorted
      */
     public boolean addAll(ISet<E> otherSet) {
         SortedSet<E> otherSortedSet;
@@ -195,7 +197,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * Neither original set is altered.
      * return: A new set containing the difference.
      * Big O: O(N) if both sets are sorted,
-     *        O(N log N) if otherSet requires sorting.
+     * O(N log N) if otherSet requires sorting.
      */
     public ISet<E> difference(ISet<E> otherSet) {
         SortedSet<E> result = new SortedSet<>();
@@ -211,9 +213,8 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
             otherSortedSet = (SortedSet<E>) otherSet;
         }
 
-        //Two Pointers approach
+        // Two Pointers approach
         result.con = diffMerger(otherSortedSet);
-
 
         return result;
     }
@@ -226,26 +227,16 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * Neither original set is altered.
      * return: A new set containing the union.
      * Big O: O(N) if both sets are sorted,
-     *        O(N log N) if otherSet requires sorting.
+     * O(N log N) if otherSet requires sorting.
      */
     public ISet<E> union(ISet<E> otherSet) {
-        SortedSet<E> result = new SortedSet<>();
+        SortedSet<E> result = this;
 
-        if (this == otherSet) {
-            return result;
+        if (result == otherSet) {
+            return otherSet;
         }
 
-        SortedSet<E> otherSortedSet;
-        if (!(otherSet instanceof SortedSet<?>)) {
-            otherSortedSet = new SortedSet<>(otherSet);
-        } else {
-            otherSortedSet = (SortedSet<E>) otherSet;
-        }
-
-        //Two Pointers
-        int index1 = 0;
-        int index2 = 0;
-        result.con = setMerger(index1, index2, otherSortedSet);
+        result.addAll(otherSet);
         return result;
     }
 
@@ -257,11 +248,13 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * in ascending order. Neither original set is altered.
      * return: A new set containing the intersection.
      * Big O: O(N) if both sets are sorted,
-     *        O(N log N) if otherSet requires sorting.
+     * O(N log N) if otherSet requires sorting.
      */
-    //TODO: Intersection
+    // TODO: Intersection
     public ISet<E> intersection(ISet<E> otherSet) {
-        return new SortedSet<>();
+        ISet<E> result = new SortedSet<>();
+        result = this.difference(this.difference(otherSet));
+        return result;
     }
 
     /**
@@ -273,7 +266,8 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
      * return: An ArrayList containing the difference.
      * Big O: O(N)
      */
-    //TODO: maybe this can combine with the setMerger; only difference is the last step
+    // TODO: maybe this can combine with the setMerger; only difference is the last
+    // step
     private ArrayList<E> diffMerger(SortedSet<E> otherSet) {
         ArrayList<E> result = new ArrayList<>();
 
@@ -292,7 +286,7 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
                 // other will never match, currently too small. move index2
                 index2++;
             } else {
-                //they are equal, not a difference since they are the same, move to next
+                // they are equal, not a difference since they are the same, move to next
                 // for both
                 index1++;
                 index2++;
@@ -344,6 +338,26 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         }
 
         return result;
+    }
+
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (!(other instanceof SortedSet<?>)) {
+            return false;
+        }
+        SortedSet<E> otherSet = (SortedSet<E>) other;
+        if (this.size() == otherSet.size()) {
+            for (int i = 0; i < this.size(); i++) {
+                if (!(this.con.get(i).equals(otherSet.con.get(i)))) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        return false;
     }
 
     /**
