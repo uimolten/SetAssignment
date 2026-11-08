@@ -336,6 +336,11 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         return result;
     }
 
+    /*
+     * checks if 2 Sets are equal.
+     * pre: other != null
+     * post: returns true or false if the sets are equal or not.
+     */
     public boolean equals(Object other) {
         if (this == other) {
             return true;
@@ -360,6 +365,10 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         return true;
     }
 
+    /*
+     * clears the entire sorted Set
+     * pre: none
+     */
     public void clear() {
         con.clear();
     }
@@ -374,6 +383,11 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
         return con.iterator();
     }
 
+    /*
+     * checks if the sortedSet contains obj.
+     * pre: obj != null
+     * post: returns true or false if obj is in the sortedset.
+     */
     public boolean contains(E obj) {
         int low = 0;
         int high = con.size() - 1;
@@ -381,6 +395,12 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
 
     }
 
+    /*
+     * checks if this sortedSet contains all of the elements in the other set.
+     * pre: other != null
+     * post: returns true or false if this contains all the elements in other
+     * regardless of order.
+     */
     public boolean containsAll(ISet<E> other) {
         if (!(other instanceof SortedSet<?>)) {
 
@@ -401,10 +421,15 @@ public class SortedSet<E extends Comparable<? super E>> extends AbstractSet314<E
             }
         }
 
-        return true;
+        return index2 == otherSet.size();
 
     }
 
+    /*
+     * conducts a binary search to find if target exists.
+     * pre: temp and target != null, low and high are within bounds
+     * post: returns true or false if target is in temp.
+     */
     private boolean searchHelper(ArrayList<E> temp, int low, int high, E target) {
         if (low > high) {
             return false;
