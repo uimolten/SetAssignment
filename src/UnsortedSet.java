@@ -1,19 +1,19 @@
 /*  Student information for assignment:
  *
- *  On <MY|OUR> honor, <NAME1> and <NAME2), 
- *  this programming assignment is <MY|OUR> own work
- *  and <I|WE> have not provided this code to any other student.
+ *  On our honor, Rionn and Ethan, 
+ *  this programming assignment is our own work
+ *  and We have not provided this code to any other student.
  *
- *  Number of slip days used:
+ *  Number of slip days used: 2
  *
  *  Student 1 (Student whose Canvas account is being used)
- *  UTEID:
- *  email address:
+ *  UTEID: rrt873
+ *  email address: rrt873@my.utexas.edu
  *  TA name:
  *  
  *  Student 2 
- *  UTEID:
- *  email address:   
+ *  UTEID: emw3442
+ *  email address:emw3442@my.utexas.edu
  */
 
 import java.util.ArrayList;

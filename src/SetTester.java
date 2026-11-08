@@ -2,15 +2,15 @@
 /*
  * Student information for assignment:
  *
- * Number of slip days used:
+ * Number of slip days used: 2 
  * Student 1 (Student whose turnin account is being used)
- *  UTEID:
- *  email address:
+ *  UTEID: rrt873
+ *  email address: rrt873@my.utexas.edu
  *  Grader name:
  *
  * Student 2
- *  UTEID:
- *  email address:
+ *  UTEID: emw3442
+ *  email address:emw3442@my.utexas.edu
  */
 
 import java.io.File;
@@ -167,7 +167,8 @@ public class SetTester {
         // tests 9 and 10: clear for UnsortedSet and SortedSet.
         for (int testNumber = 9; testNumber <= 10; testNumber++) {
             ISet<String> clearSet = testNumber == 9
-                    ? new UnsortedSet<>() : new SortedSet<>();
+                    ? new UnsortedSet<>()
+                    : new SortedSet<>();
             clearSet.add("A");
             clearSet.add("B");
             clearSet.add("C");
@@ -275,7 +276,8 @@ public class SetTester {
         showTestResults(actual, true, 17, differenceLeft, differenceRight,
                 "SortedSet difference keeps only left-side elements and preserves inputs.");
 
-        // test 18: union includes leftovers, removes duplicates, and returns new storage.
+        // test 18: union includes leftovers, removes duplicates, and returns new
+        // storage.
         SortedSet<Integer> unionLeft = sortedSetOf(1, 4);
         SortedSet<Integer> unionRight = sortedSetOf(2, 4, 8);
         ISet<Integer> unionResult = unionLeft.union(unionRight);
@@ -332,7 +334,7 @@ public class SetTester {
         SortedSet<Integer> iteratorSet = sortedSetOf(9, -2, 4);
         Iterator<Integer> sortedIterator = iteratorSet.iterator();
         actual = true;
-        int[] iteratorExpected = {-2, 4, 9};
+        int[] iteratorExpected = { -2, 4, 9 };
         for (int value : iteratorExpected) {
             if (!sortedIterator.hasNext() || !Integer.valueOf(value).equals(sortedIterator.next())) {
                 actual = false;
